@@ -1,0 +1,11 @@
+= form_for(@link) do |f|
+  .modal-body
+    .form-group
+      = f.label :url
+      = f.text_field :url, class: "form-control"
+    .form-group
+      = f.label :link_type
+      = f.select :link_type, options_for_select(Link.link_types.map {|k,v| [k,v]}), {prompt: :select}, class: "form-control"       
+  .modal-footer
+    = f.submit class: "btn btn-primary"
+    = link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"}
