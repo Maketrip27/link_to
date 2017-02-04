@@ -1,22 +1,37 @@
-p#notice
-  = notice
-h1
-  | Listing Links
-table
-  thead
-    tr
-      th[colspan="3"]
-  tbody
+.row
+  #grid.top-padding
     - if @links.present?
       - @links.each do |link|
-        tr
-          td
-            = link.title
-          td
-            = link_to 'Show', link_path(link)
-          td
-            = link_to 'Edit', edit_link_path(link), remote: true
-          td
-            = link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }
-br
-= link_to 'New link', new_link_path
+        .col.s3.m3.block
+          .card
+            .card-image
+              - if link.video_url?
+                = get_video_link(link.url)
+              - elsif link.simple_url?
+                - if link.image_url.present?
+                  img src = "#{link.image_url}" class = "image-width"
+                - else
+                  img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" data-url="#{link.url}" style="width:300px;height:200px;"
+              - elsif link.image_url?
+                img src = "#{link.url}" class = "image-width"
+            .card-content
+              span.card-title
+                = link.title.truncate(20)
+              p
+                = link.description.truncate(100)
+            .card-action
+              = link_to link.url, :target => "_blank" do
+                i.material-icons open_in_browser
+              = link_to edit_link_path(link), remote: true do
+                i.material-icons mode_edit         
+              = link_to link, method: :delete, data: { confirm: 'Are you sure?' } do
+                i.material-icons delete
+javascript:
+  $(document).ready(function() {
+    $('#grid').BlocksIt({
+      numOfCol: 4,
+      offsetX: 1,
+      offsetY: 1,
+      blockElement: '.block'
+      });
+  });   

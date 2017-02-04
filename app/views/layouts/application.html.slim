@@ -3,10 +3,19 @@ html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title LinkTo
+    link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body.container
-  	= render partial: 'layouts/header'
+  body
+    .row
+      = render partial: 'layouts/header'
     = yield
-  	#link-modal.modal.fade 
+    #link-modal.modal
+
+
+javascript:
+  $(document).ready(function(){
+    $('.modal').modal();
+    $('select').material_select();
+  });

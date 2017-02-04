@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require materialize-sprockets
+//= require blocksit.min
+//= require url2img
 //= require turbolinks
 //= require_tree .

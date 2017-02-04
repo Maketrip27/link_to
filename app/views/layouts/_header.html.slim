@@ -1,16 +1,51 @@
-nav.navbar.navbar-inverse
-  .container-fluid
-    .navbar-header
-      a.navbar-brand[href="#"]
-        | Link To
-    ul.nav.navbar-nav
-      li.active
-        = link_to('Home', root_path)
+nav
+  .nav-wrapper
+    = link_to "javascript:void(0)", class: 'brand-logo', id:'sidenav' do
+      i.material-icons menu
+    ul.right.hide-on-med-and-down
       li
-        = link_to('Add Link', new_link_path, remote: true)
-    ul.nav.navbar-nav.navbar-right
+        = link_to new_link_path, remote: true, class: 'waves-effect waves-light' do
+          i.material-icons note_add
       li
-        - if user_signed_in?
-          = link_to('Logout', destroy_user_session_path, :method => :delete)
-        - else
-          = link_to('Login', new_user_session_path)
+        a href="badges.html" 
+          i.material-icons view_module
+      li
+        a href="collapsible.html" 
+          i.material-icons refresh
+      li
+        a href="mobile.html" 
+          i.material-icons more_vert
+ul#slide-out.side-nav
+  li
+    .userView
+      .background
+        img src="http://wallpapercave.com/wp/Nithf7m.jpg" /
+      a href="#!user" 
+        img.circle src="http://wallpapercave.com/wp/Nithf7m.jpg" /
+      a href="#!name" 
+        span.white-text.name 
+          = current_user.first_name
+      a href="#!email" 
+        span.white-text.email
+          = current_user.email
+  li
+    a href="#!" 
+      i.material-icons> cloud
+      | First Link With Icon
+  li
+    a href="#!"  Second Link
+  li
+    .divider
+  li
+    a.subheader Subheader
+  li
+    a.waves-effect href="#!"  Third Link With Waves
+a.button-collapse data-activates="slide-out" href="#" 
+
+javascript:
+  $(document).ready(function() {
+    $(".button-collapse").sideNav();
+    $('#sidenav').on('click',function(){
+      $('.button-collapse').sideNav('show');
+    });
+  });

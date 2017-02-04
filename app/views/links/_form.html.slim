@@ -1,11 +1,17 @@
 = form_for(@link) do |f|
-  .modal-body
-    .form-group
-      = f.label :url
-      = f.text_field :url, class: "form-control"
-    .form-group
-      = f.label :link_type
-      = f.select :link_type, options_for_select(Link.link_types.map {|k,v| [k,v]}), {prompt: :select}, class: "form-control"       
+  .row
+    .input-field.col.s6
+      = f.text_field :url, class: "validate"
+      label for="Url"  Url
+    .input-field.col.s6
+      = f.select :link_type, options_for_select(Link.link_types.map {|k,v| [k.titleize, k]}), {prompt: :select}
+      label Link Type
   .modal-footer
-    = f.submit class: "btn btn-primary"
-    = link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"}
+    = f.submit "Submit",class: 'waves-effect waves-light btn-flat'
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat  cancel
+.input-field.col.s6
+
+javascript:
+  $(document).ready(function(){
+    $('select').material_select();
+  });

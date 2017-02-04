@@ -2,9 +2,13 @@ source 'https://rubygems.org'
 
 
 gem 'devise'
-gem 'bootstrap-sass', '~> 3.3.6'
+# gem 'bootstrap-sass', '~> 3.3.6'
 gem "slim-rails"
-gem 'grabbit'
+gem 'grabbit'  #for url detail
+gem 'video_player'
+
+gem 'materialize-sass'
+gem 'font-awesome-rails'
 
 
 gem 'rails', '4.2.7.1'
