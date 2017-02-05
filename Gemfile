@@ -6,6 +6,7 @@ gem 'devise'
 gem "slim-rails"
 gem 'grabbit'  #for url detail
 gem 'video_player'
+gem "lazyload-rails"
 
 gem 'materialize-sass'
 gem 'font-awesome-rails'

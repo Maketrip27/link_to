@@ -10,6 +10,8 @@ html
   body
     .row
       = render partial: 'layouts/header'
+      - if current_user.present?
+        = render partial: 'layouts/sidenav'     
     = yield
     #link-modal.modal
 

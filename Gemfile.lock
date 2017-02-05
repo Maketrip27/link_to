@@ -77,6 +77,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
+    lazyload-rails (0.3.1)
+      nokogiri (~> 1.5)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -187,6 +189,7 @@ DEPENDENCIES
   grabbit
   jbuilder (~> 2.0)
   jquery-rails
+  lazyload-rails
   materialize-sass
   pg (~> 0.15)
   pry

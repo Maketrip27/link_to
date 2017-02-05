@@ -3,31 +3,36 @@
     - if @links.present?
       - @links.each do |link|
         .col.s3.m3.block
-          .card
+          .card.hoverable
             .card-image
               - if link.video_url?
                 = get_video_link(link.url)
               - elsif link.simple_url?
                 - if link.image_url.present?
-                  img src = "#{link.image_url}" class = "image-width"
+                  = image_tag "#{link.image_url}", lazy: true, class: "image-width"
                 - else
-                  img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" data-url="#{link.url}" style="width:300px;height:200px;"
+                  = image_tag "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D", lazy: true, class: "image-width",data:{url:"#{link.url}"}
               - elsif link.image_url?
-                img src = "#{link.url}" class = "image-width"
+                = image_tag "#{link.url}", lazy: true, class: "image-width"
             .card-content
               span.card-title
                 = link.title.truncate(20)
-              p
+              p.wrap
                 = link.description.truncate(100)
             .card-action
-              = link_to link.url, :target => "_blank" do
-                i.material-icons open_in_browser
-              = link_to edit_link_path(link), remote: true do
-                i.material-icons mode_edit         
-              = link_to link, method: :delete, data: { confirm: 'Are you sure?' } do
-                i.material-icons delete
+              = link_to link, method: :delete, class:'btn-floating action-margin red right', data: { confirm: 'Are you sure?' } do
+                i.material-icons.tooltipped data-position = "top" data-tooltip = "Remove" delete
+              = link_to edit_link_path(link), class:'btn-floating action-margin right', remote: true do
+                i.material-icons.tooltipped data-position = "top" data-tooltip = "Edit Link" mode_edit
+              = link_to link.url, class:'btn-floating action-margin', :target => "_blank" do
+                i.material-icons.tooltipped data-position = "top" data-tooltip = "Open In tab" open_in_browser
 javascript:
   $(document).ready(function() {
+    $("img").lazyload({
+      threshold : 20,
+      effect : "fadeIn",
+      skip_invisible : true
+    });
     $('#grid').BlocksIt({
       numOfCol: 4,
       offsetX: 1,

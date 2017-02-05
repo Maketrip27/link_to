@@ -1,0 +1,26 @@
+ul#slide-out.side-nav
+  li
+    .userView
+      .background
+        img src="http://wallpapercave.com/wp/Nithf7m.jpg" /
+      a href="#!user" 
+        img.circle src="http://wallpapercave.com/wp/Nithf7m.jpg" /
+      a href="#!name" 
+        span.white-text.name 
+          = current_user.first_name
+      a href="#!email" 
+        span.white-text.email
+          = current_user.email
+  li
+    a href="#!" 
+      i.material-icons> cloud
+      | First Link With Icon
+  li
+    a href="#!"  Second Link
+  li
+    .divider
+  li
+    a.subheader Subheader
+  li
+    a.waves-effect href="#!"  Third Link With Waves
+a.button-collapse data-activates="slide-out" href="#" 

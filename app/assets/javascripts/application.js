@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require materialize-sprockets
+//= require jquery.lazyload
 //= require blocksit.min
 //= require url2img
 //= require turbolinks
